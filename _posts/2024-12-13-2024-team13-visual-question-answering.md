@@ -8,9 +8,7 @@ date: 2024-12-12
 
 
 >
-Visual Question Answering (VQA) is a field in artificial intelligence that focuses on enabling machines to answer questions about images by understanding both the visual and textual information. 
-In this project, we will evaluate and compare the performance of various VQA models, including LSTM-CNN, HieCoAtten, and MMFT, across different datasets such as VQA v2, CLEVR, and GQA. 
-Through a combination of quantitative accuracy metrics and qualitative analysis of attention maps, we aim to uncover insights into how these models reason and where improvements can be made.
+Visual Question Answering (VQA) combines computer vision and natural language processing to enable AI systems to answer questions about images. This project explores and compares models like LSTM-CNN, HieCoAtten, and MMFT, evaluating their performance on datasets such as VQA v2, CLEVR, GQA, and DAQUAR. Using accuracy metrics and attention map visualizations, we uncover how these models process visual and textual data, highlighting their strengths and identifying areas for improvement.
 
 
 <!--more-->
@@ -18,8 +16,18 @@ Through a combination of quantitative accuracy metrics and qualitative analysis 
 * TOC
 {:toc}
 
-## Main Content
-Your survey starts here. You can refer to the [source code](https://github.com/lilianweng/lil-log/tree/master/_posts) of [lil's blogs](https://lilianweng.github.io/lil-log/) for article structure ideas or Markdown syntax. We've provided a [sample post](https://ucladeepvision.github.io/CS188-Projects-2022Winter/2017/06/21/an-overview-of-deep-learning.html) from Lilian Weng and you can find the source code [here](https://raw.githubusercontent.com/UCLAdeepvision/CS188-Projects-2022Winter/main/_posts/2017-06-21-an-overview-of-deep-learning.md)
+## Introduction
+Visual Question Answering (VQA) is a multi-disciplinary challenge at the intersection of computer vision and natural language processing. In this paper, we explore the evolution of VQA models, starting from foundational architectures to state-of-the-art approaches. We examine the integration of visual and textual information in early models like LSTM-CNN, the advancements introduced by attention-based models such as Stacked Attention Networks (SAN), and the transformative impact of multimodal transformers like MMFT. Additionally, we briefly discuss other notable models, such as MCBLP and HieCoAtten, highlighting their unique contributions to the field. By analyzing the performance, design, and implications of these models, we provide a comprehensive overview of the VQA landscape, concluding with an assessment of their current limitations and future potential.
+
+## Early Fusion: LSTM-CNN and the Foundations of VQA
+
+## Attention Mechanisms: Learning to Focus on Relevant Features
+
+## Transformers in VQA: Multimodal Fusion with MMFT
+
+## Other Models in VQA
+
+## Conclusion and Future Perspectives
 
 ## Basic Syntax
 ### Image
@@ -63,11 +71,8 @@ or you can write in-text formula $$y = wx + b$$.
 ### More Markdown Syntax
 You can find more Markdown syntax at [this page](https://www.markdownguide.org/basic-syntax/).
 
-## Reference
-Please make sure to cite properly in your work, for example:
+## References
 
-[1] Redmon, Joseph, et al. "You only look once: Unified, real-time object detection." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2016.
-
-[2] Antol, Agrawal, Lu, et al. "VQA: Visual Question Answering." *Proceedings of the IEEE International Conference on Computer Vision*. 2015.
+[1] Antol, Agrawal, Lu, et al. "VQA: Visual Question Answering." *Proceedings of the IEEE International Conference on Computer Vision*. 2015.
 
 ---
