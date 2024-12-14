@@ -17,7 +17,7 @@ Visual Question Answering (VQA) combines computer vision and natural language pr
 {:toc}
 
 ## Introduction
-Visual Question Answering (VQA) is a challenging task at the intersection of computer vision and natural language processing, where models are required to answer questions based on the content of images. This paper explores the evolution of VQA models, starting from earlier architectures like LSTM-CNN and Stacked Attention Networks (SAN), which focus on integrating visual and textual data. We also discuss more recent advancements in VQA, such as CLIP, which leverages large-scale pretraining of image-text pairs for zero-shot learning. CLIP's ability to generalize across tasks without task-specific fine-tuning represents a significant leap in VQA research, as it improves on older models' limitations. Additionally, we briefly cover other notable models, like HieCoAtten, which introduces hierarchical co-attention mechanisms, and the contributions of these approaches to the field. By evaluating their performance on popular VQA datasets, such as VQA v2, CLEVR, GQA, and DAQUAR, we assess the progress made and identify areas for future research in the ever-evolving VQA landscape.
+Visual Question Answering (VQA) is a challenging task at the intersection of computer vision and natural language processing, where models are required to answer questions based on the content of images, requiring a multimodal interpretation of image and text data. This paper explores the evolution of VQA models, starting from earlier architectures like LSTM-CNN and Stacked Attention Networks (SAN), which focus on integrating visual and textual data. We also discuss more recent advancements in VQA, such as CLIP, which leverages large-scale pretraining of image-text pairs for zero-shot learning. CLIP's ability to generalize across tasks without task-specific fine-tuning represents a significant leap in VQA research, as it improves on older models' limitations. Additionally, we briefly cover other notable models, like HieCoAtten, which introduces hierarchical co-attention mechanisms, and the contributions of these approaches to the field. By evaluating their performance on popular VQA datasets, such as VQA v2, CLEVR, GQA, and DAQUAR, we assess the progress made and identify areas for future research in the ever-evolving VQA landscape.
 
 ## Early Fusion: LSTM-CNN
 
@@ -450,9 +450,6 @@ In contrast to traditional models like SAN or LSTM-CNN, which rely on stacking a
 
 Overall, CLIP’s ability to generalize across various tasks without requiring large-scale task-specific datasets or fine-tuning provides a significant advantage over traditional models, which are often limited by their reliance on domain-specific data and architectures.
 
-
-Here’s the revised section that incorporates the models you mentioned (LSTM-CNN, SAN, CLIP) along with Bilinear Pooling, Hierarchical Coattention, MMFT with BERT, and LLMs in the correct historical order:
-
 ## Other Models in VQA
 
 In addition to the models we have discussed, several other models have made significant contributions to the Visual Question Answering (VQA) field. These models range from early approaches that combined visual and textual features in a straightforward manner, to more recent, sophisticated methods that integrate large pre-trained models for better performance. Below is a summary of key models used in VQA (not including the models we have detailed):
@@ -482,7 +479,7 @@ Below is a link to a Colab notebook containing a VQA system built off of ViLT, a
 
 [Colab Notebook](https://colab.research.google.com/drive/18hnP5Q3xYndpPDExEP5d7FRddGPBejr_?usp=sharing)
 
-The implementation was taken from [this GitHub repository](https://github.com/NielsRogge/Transformers-Tutorials/blob/master/ViLT/Fine_tuning_ViLT_for_VQA.ipynb) which was based off of a HuggingFace article on a basic VQA implementation[13]. Some modifications were made to the training functoin with an optimizer and a learning rate scheduler being added. 
+The implementation was taken from [this GitHub repository](https://github.com/NielsRogge/Transformers-Tutorials/blob/master/ViLT/Fine_tuning_ViLT_for_VQA.ipynb) which was based off of a HuggingFace article on a basic VQA implementation[13]. Some modifications were made to the training function with an optimizer and a learning rate scheduler being added. 
 
 The dataset used was only the validation set of the [VQA v2 dataset](https://visualqa.org/download.html) since this codebase is simply a demo, so the training data was a bit lacking. However, it still was able to somewhat accurately understand the question and give proper and relevant answers, and with more training data and training epochs, the performance could be drastically improved. 
 
