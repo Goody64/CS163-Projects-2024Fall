@@ -132,7 +132,7 @@ The performance of the LSTM-CNN model was evaluated using the DAQUAR dataset. Th
 
 <h4><span style="color:black; font-weight: bold;">Explanation of WUPS Scores</span></h4>
 
-WUPS (Word Overlap with Partial Matching Score) is a metric used to evaluate the semantic similarity between the predicted and ground truth answers. It is particularly useful in visual question answering (VQA) tasks where the output may not exactly match the ground truth answer but may still be semantically close. 
+WUPS (Word Overlap with Partial Matching Score) is a metric used to evaluate the semantic similarity between the predicted and ground truth answers. It is particularly useful in VQA tasks where the output may not exactly match the ground truth answer but may still be semantically close. 
 
 - **WUPS@0.9**: This score measures how closely the predicted answer matches the ground truth, with a high threshold (0.9) for word overlap. A higher score means the predicted answer is more likely to be semantically identical or nearly identical to the ground truth answer.
 - **WUPS@0.0**: This score is less stringent, allowing for partial matches in the answers. A score of 0.0 means there is no threshold for word overlap, and even partially matching answers can achieve higher scores.
@@ -194,7 +194,7 @@ The model performs well on questions involving clearly defined objects and their
 
 ### Overview
 
-Stacked Attention Networks (SAN), proposed by Yang et al. (2016) in the paper "Stacked Attention Networks for Image Question Answering" [4], represent an advancement in the fusion of image and textual features in Visual Question Answering (VQA). The key innovation in SAN is the use of a multi-layer attention mechanism that allows the model to focus on different parts of the image at each layer, progressively refining the features relevant to the question. This allows the model to capture finer details and spatial relationships between objects, which are often crucial for answering complex visual questions.
+Stacked Attention Networks (SAN), proposed by Yang et al. (2016) in the paper "Stacked Attention Networks for Image Question Answering" [4], represent an advancement in the fusion of image and textual features in VQA. The key innovation in SAN is the use of a multi-layer attention mechanism that allows the model to focus on different parts of the image at each layer, progressively refining the features relevant to the question. This allows the model to capture finer details and spatial relationships between objects, which are often crucial for answering complex visual questions.
 
 ![SAN Example]({{ '/assets/images/team13/SAN-example.png' | relative_url }}) 
 {: style="width: 400px; max-width: 100%;"} 
@@ -324,7 +324,7 @@ class SAN_Model(nn.Module):
 ```
 ### Results
 
-The performance of the Stacked Attention Networks (SAN) model was evaluated on the DAQUAR, COCO-QA, and VQA datasets. Similar to the LSTM-CNN model, the SAN model was tested on both the full DAQUAR dataset and a reduced version containing 25 images and 297 QA pairs. Evaluation metrics included accuracy and WUPS scores at thresholds of 0.9 and 0.0, as well as the VQA metric for the VQA dataset.
+The performance of the SAN model was evaluated on the DAQUAR, COCO-QA, and VQA datasets. Similar to the LSTM-CNN model, the SAN model was tested on both the full DAQUAR dataset and a reduced version containing 25 images and 297 QA pairs. Evaluation metrics included accuracy and WUPS scores at thresholds of 0.9 and 0.0, as well as the VQA metric for the VQA dataset.
 
 $$
 accuracy_{VQA} = \min\left(\frac{\# \text{human labels that match that answer}}{3}, 1\right)
@@ -387,7 +387,7 @@ Recent advancements in large-scale pre-trained multimodal models like CLIP (Cont
 
 The core of the CLIP model [5] is based on the transformer architecture, where both image and text modalities are encoded into a shared high-dimensional space. The model is pre-trained using a large corpus of image-text pairs, allowing it to learn general visual concepts and their textual descriptions. For VQA, CLIP’s architecture can be divided into two main components:
 
-1. Image Encoder: CLIP uses a convolutional neural network (CNN)-based architecture (e.g., ResNet or Vision Transformer) as the image encoder. The image is processed into a fixed-length feature vector that captures high-level semantic information about the image, such as objects, actions, and spatial relationships.
+1. Image Encoder: CLIP uses a CNN-based architecture (e.g., ResNet or Vision Transformer) as the image encoder. The image is processed into a fixed-length feature vector that captures high-level semantic information about the image, such as objects, actions, and spatial relationships.
 
 2. Text Encoder: The text encoder, typically a transformer-based model (e.g., a variant of BERT [7] or GPT), processes the input question into a fixed-length vector that represents its semantic meaning. The model’s attention mechanism helps it capture complex relationships between words in the question.
 
@@ -395,7 +395,7 @@ Both the image and text encoders output embeddings in a shared space, and the si
 
 ### Code Implementation
 
-Below is a simplified version of the CLIP-based model for VQA using PyTorch. This code demonstrates how to use pre-trained CLIP models for image and question embedding, followed by computing the similarity between them to answer questions.
+Below is a simplified implementation of the CLIP-based model for VQA using PyTorch. This code demonstrates how to use pre-trained CLIP models for image and question embedding, followed by computing the similarity between them to answer questions.
 
 ```python
 import torch
@@ -434,7 +434,7 @@ def predict_answer(image_path, question):
 
 ### Results and Comparison with Traditional Models
 
-The CLIP-based model has demonstrated significant success in zero-shot and few-shot learning for Visual Question Answering (VQA), outperforming traditional models like Stacked Attention Networks (SAN) and LSTM-CNN in various key areas. Below are the findings from experiments on popular VQA datasets like VQAv2 and SNLI-VE:
+The CLIP-based model has demonstrated significant success in zero-shot and few-shot learning for VQA, outperforming traditional models like Stacked Attention Networks (SAN) and LSTM-CNN in various key areas. Below are the findings from experiments on popular VQA datasets like VQAv2 and SNLI-VE:
 
 - Zero-Shot Performance: 
 CLIP has shown competitive accuracy in zero-shot settings without the need for task-specific fine-tuning. On the VQAv2 dataset, CLIP achieved an accuracy of approximately 55%, significantly outperforming traditional models like SAN, which achieved around 52%. SAN models typically require extensive fine-tuning to achieve such results, whereas CLIP's ability to generalize from large-scale pretraining enables strong performance across diverse tasks without additional labeled data.
@@ -470,7 +470,7 @@ More recent advancements, such as those leveraging GPT-like architectures (e.g.,
 
 Visual Question Answering (VQA) has seen substantial progress with the transition from earlier models like LSTM-CNN and Stacked Attention Networks (SAN), which relied heavily on handcrafted features and required task-specific fine-tuning, to more recent models like CLIP. These newer models, particularly those leveraging large-scale pretraining on vast amounts of image-text pairs, offer notable advantages, such as strong performance in zero-shot and few-shot learning tasks. This shift allows for broader generalization across a variety of VQA tasks without requiring extensive task-specific datasets. CLIP, for instance, aligns both visual and textual data into a shared embedding space, making it more adaptable and efficient compared to traditional methods. However, challenges remain in improving the handling of complex, multi-step reasoning tasks, and these models are not without their limitations in terms of interpretability and computational cost.
 
-Looking ahead, the integration of older models, such as LSTM-CNN and SAN, with newer large language models (LLMs) like BERT or GPT could pave the way for even better performance in Visual Question Answering (VQA). Combining the strengths of traditional models, such as hierarchical co-attention or bilinear pooling, with the powerful language understanding of LLMs can potentially result in more robust systems capable of tackling a wider array of complex, multi-step reasoning tasks. LLMs excel at contextualizing language, which, when paired with the image understanding mechanisms of earlier models, could help overcome current limitations in image-text reasoning. This hybrid approach may allow for significant improvements in both zero-shot and few-shot performance, enabling VQA systems to adapt to new tasks with minimal data, while also enhancing their ability to handle domain-specific challenges.
+Looking ahead, the integration of older models, such as LSTM-CNN and SAN, with newer large language models (LLMs) like BERT or GPT could pave the way for even better performance in VQA. Combining the strengths of traditional models, such as hierarchical co-attention or bilinear pooling, with the powerful language understanding of LLMs can potentially result in more robust systems capable of tackling a wider array of complex, multi-step reasoning tasks. LLMs excel at contextualizing language, which, when paired with the image understanding mechanisms of earlier models, could help overcome current limitations in image-text reasoning. This hybrid approach may allow for significant improvements in both zero-shot and few-shot performance, enabling VQA systems to adapt to new tasks with minimal data, while also enhancing their ability to handle domain-specific challenges.
 
 Furthermore, combining these approaches can contribute to reducing biases, improving model fairness, and enhancing interpretability. With LLMs increasingly handling complex reasoning and comprehension tasks, the future of VQA may lie in merging the efficiency and feature extraction capabilities of earlier models with the contextual and reasoning power of LLMs, thus ensuring that VQA systems are both powerful and flexible in real-world applications.
 
@@ -479,9 +479,9 @@ Below is a link to a Colab notebook containing a VQA system built off of ViLT, a
 
 [Colab Notebook](https://colab.research.google.com/drive/18hnP5Q3xYndpPDExEP5d7FRddGPBejr_?usp=sharing)
 
-The implementation was taken from [this GitHub repository](https://github.com/NielsRogge/Transformers-Tutorials/blob/master/ViLT/Fine_tuning_ViLT_for_VQA.ipynb) which was based off of a HuggingFace article on a basic VQA implementation[13]. Some modifications were made to the training function with an optimizer and a learning rate scheduler being added. 
+The implementation was taken from [this GitHub repository](https://github.com/NielsRogge/Transformers-Tutorials/blob/master/ViLT/Fine_tuning_ViLT_for_VQA.ipynb) which is based off of a HuggingFace article on a basic VQA implementation[13]. Some modifications were made to the training function with an optimizer and a learning rate scheduler being added. 
 
-The dataset used was only the validation set of the [VQA v2 dataset](https://visualqa.org/download.html) since this codebase is simply a demo, so the training data was a bit lacking. However, it still was able to somewhat accurately understand the question and give proper and relevant answers, and with more training data and training epochs, the performance could be drastically improved. 
+The dataset used was only the validation set of the [VQA v2 dataset](https://visualqa.org/download.html) since this codebase is simply a demo, so the training data was a bit lacking. However, it still was able to somewhat accurately understand the question and give proper and relevant answers, and with more training data and training epochs, the performance could be drastically improved. Furthermore, further fine-tuning of optimizers and learning rates could also improve performance. 
 
 Something we added to the ViLT code was an implementation of GradCAM to give a heatmap of whatever the model was looking at in order to answer the question. This could be utilized to see how well the model is paying attention to correct regions of input in order to give a properly correlated output as well as creating a bounding box at no extra cost. 
 
