@@ -170,7 +170,7 @@ The model shows improved performance across all metrics when tested on the reduc
 
 <h4><span style="color:black; font-weight: bold;">Comparison with Language-Only Model</span></h4>
 
-For comparison, a language-only model was evaluated on the same datasets:
+For comparison, a language-only model (that doesn't use any visual features) was evaluated on the same datasets:
 
 - Full DAQUAR dataset:
   - Accuracy: 17.06%
@@ -477,6 +477,18 @@ Looking ahead, the integration of older models, such as LSTM-CNN and SAN, with n
 
 Furthermore, combining these approaches can contribute to reducing biases, improving model fairness, and enhancing interpretability. With LLMs increasingly handling complex reasoning and comprehension tasks, the future of VQA may lie in merging the efficiency and feature extraction capabilities of earlier models with the contextual and reasoning power of LLMs, thus ensuring that VQA systems are both powerful and flexible in real-world applications.
 
+## Running VQA Model
+Below is a link to a Colab notebook containing a VQA system built off of ViLT, a model that incorporates text embeddings into a Vision Transformer (ViT). 
+
+[Colab Notebook](https://colab.research.google.com/drive/18hnP5Q3xYndpPDExEP5d7FRddGPBejr_?usp=sharing)
+
+The implementation was taken from [this GitHub repository](https://github.com/NielsRogge/Transformers-Tutorials/blob/master/ViLT/Fine_tuning_ViLT_for_VQA.ipynb) which was based off of a HuggingFace article on a basic VQA implementation[13]. Some modifications were made to the training functoin with an optimizer and a learning rate scheduler being added. 
+
+The dataset used was only the validation set of the [VQA v2 dataset](https://visualqa.org/download.html) since this codebase is simply a demo, so the training data was a bit lacking. However, it still was able to somewhat accurately understand the question and give proper and relevant answers, and with more training data and training epochs, the performance could be drastically improved. 
+
+Something we added to the ViLT code was an implementation of GradCAM to give a heatmap of whatever the model was looking at in order to answer the question. This could be utilized to see how well the model is paying attention to correct regions of input in order to give a properly correlated output as well as creating a bounding box at no extra cost. 
+
+
 ## References
 
 [1] Antol, S., Agrawal, A., Lu, J., et al. "VQA: Visual Question Answering." 2015. arXiv:1505.00468v1.
@@ -502,5 +514,7 @@ Furthermore, combining these approaches can contribute to reducing biases, impro
 [11] Khare, Y., Bagal, V., Mathew, M., Devi, A., Priyakumar, U., Jawahar, CV."MMBERT: Multimodal BERT Pretraining for Improved Medical VQA." 2021. arXiv:2104.01394.
 
 [12] Sampat, S., Patel, M., Yang, Y., Baral, C. "Help Me Identify: Is an LLM+VQA System All We Need to Identify Visual Concepts?." 2024. arXiv:2410.13651
+
+[13] Hugging Face Transformers Documentation. "Visual Question Answering (VQA): Using Transformers for Multimodal Tasks." Hugging Face, 2024.
 
 ---
